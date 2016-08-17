@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "#Data Handling\n#Problem B\napply(my_data, 1, mean)\n\n#Problem C\nhead(apply(my_data, 1, min))\nhead(apply(my_data, 1, max))\n\nhead(apply(my_data, 2, min))\nhead(apply(my_data, 2, max))\n\n#Problem D\nwhich.max(apply(my_data, 1, sd))\nmax(apply(my_data, 1, sd))\n\n#Problem E\nmax(apply(my_data, 1, max))\nwhich.max(apply(my_data, 2, max))\nwhich.max(apply(my_data, 1, max))\n\n#Plotting\n#A\nhist(as.numeric(my_data[\"EGFR\",]), xlab = \"EGFR expression\", ylab = \"Frequency (# of samples)\", breaks = 30, main = paste(\"Histogram of EGFR expression\"))\n\n#B\nplot(as.numeric(my_data[\"EGFR\", ]), as.numeric(my_data[\"IDH1\", ]), xlab = \"EGFR expression\", ylab = \"IDH1 expression\", main = paste(\"EGFR versus IDH1\"), type = \"p\", pch = 20)\n\n#C\nlength(grep(\"ZNF\", rownames(my_data)))\ngrep(\"ZNF\", rownames(my_data))\nnames <- rownames(my_data)\nidx <- grep(\"ZNF\", rownames(my_data))\nnames[idx]\nznfbox <- (apply(my_data[idx, ], 2, mean))\nallbox <- (apply(my_data, 2, mean))\nboxplot(znfbox, allbox, main = \"ZNF gene expression versus all genes\", notch = TRUE, ylab = \"Expression\", names = c(\"Average ZNF\", \"Average of All Genes\"))\n\n#Functions\n#A and B\nmy_vector <- c(10,5,2,6,8,4,1,9,3,7)\n\n##naming the loop\nselectionsort.loop <- function(v) {\n  #N is going to be the full length, this is how far the function should work\n  N = length(v)\n  Position = 1:N\n  #go through the whole thing\n  for(i in 1:N) {\n    min = i \n    #\n    for(j in i:N) {\n      if(v[j] < v[min]) {\n        min = j\n      }\n      \n    }\n    \n    temp = v[i]\n    v[i] = v[min]\n    v[min] = temp\n    \n    temp2 = Position[i]\n    Position[i] = Position[min]\n    Position[min] = temp2\n  }\n  #return(v) - this would give you #A\n  return(Position)\n}\n\n",
+    "created" : 1471282829287.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1401301171",
+    "id" : "B788A28",
+    "lastKnownWriteTime" : 1471293319,
+    "last_content_update" : 1471293319791,
+    "path" : "~/Documents/Biomedical Informatics/Boot Camp/Intro-to-R/Exercise 15.R",
+    "project_path" : "Exercise 15.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
